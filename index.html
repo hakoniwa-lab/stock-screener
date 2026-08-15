@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株スクリーニング条件メーカー | HAKONIWA LAB</title>
+<meta name="description" content="3つの質問に答えるだけで、株のスクリーニング(条件検索)にそのまま使える条件を組み立てます。PERや配当利回りに何を入れればいいか分からない初心者向けの無料ツール。">
+<link rel="canonical" href="https://hakoniwa-lab.github.io/stock-screener/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="株スクリーニング条件メーカー | HAKONIWA LAB">
+<meta property="og:description" content="3つの質問に答えるだけで、株の条件検索にそのまま使える条件を組み立てます。PERや配当利回りに何を入れればいいか分からない方向け。">
+<meta property="og:url" content="https://hakoniwa-lab.github.io/stock-screener/">
+<link rel="stylesheet" href="./css/style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6465548593525933" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="page">
+
+  <header class="hero">
+    <span class="hero__mark"><a href="https://hakoniwa-lab.github.io/">HAKONIWA LAB</a></span>
+    <h1 class="hero__title">株スクリーニング条件メーカー</h1>
+    <p class="hero__lead">
+      株の条件検索(スクリーニング)は無料で誰でも使えるのに、<br>
+      「PERって何？いくつ入れればいいの？」で止まってしまいがちです。<br>
+      3つ答えるだけで、その条件を組み立てます。
+    </p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2 class="card__title"><span class="qnum">Q1</span>何を狙いたいですか？</h2>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="style" value="income" checked><b>配当をコツコツ受け取りたい</b>
+          <small>安く買えて、配当をしっかり出している会社を探します。無理に配当を出していないかも確認します。</small></label>
+        <label class="opt"><input type="radio" name="style" value="growth"><b>値上がりを狙いたい</b>
+          <small>売上と利益が伸びている会社を探します。配当は少なめでも構わない、という前提です。</small></label>
+        <label class="opt"><input type="radio" name="style" value="yutai"><b>株主優待がほしい</b>
+          <small>優待を出していて、配当もそこそこある会社を探します。</small></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="card__title"><span class="qnum">Q2</span>会社の大きさは？</h2>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="size" value="large"><b>大きい会社が安心</b>
+          <small>時価総額2,000億円以上。売りたいときに売れないリスクは小さくなりますが、条件に合う会社はかなり少なくなります。</small></label>
+        <label class="opt"><input type="radio" name="size" value="mid" checked><b>中くらいの会社から探す</b>
+          <small>時価総額300億円以上。極端に小さい会社を外しつつ、候補はある程度残ります。迷ったらこれ。</small></label>
+        <label class="opt"><input type="radio" name="size" value="any"><b>小さくても掘り出し物を探したい</b>
+          <small>大きさを問いません。候補は増えますが、知っておいてほしい注意点があります(選ぶと表示されます)。</small></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="card__title"><span class="qnum">Q3</span>1銘柄あたりの予算は？</h2>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="budget" value="10"><b>10万円くらいまで</b>
+          <small>日本株はふつう100株単位で買うので、株価1,000円くらいまでが対象になります。</small></label>
+        <label class="opt"><input type="radio" name="budget" value="30"><b>30万円くらいまで</b>
+          <small>株価3,000円くらいまでが対象になります。</small></label>
+        <label class="opt"><input type="radio" name="budget" value="0" checked><b>こだわらない</b>
+          <small>金額では絞りません。</small></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="card__title">もう少し絞る(任意)</h2>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" id="opt-safe"><b>財務が健全な会社だけにする</b>
+          <small>自己資本比率40%以上。借金に頼りすぎていない会社に限定します。</small></label>
+        <label class="opt"><input type="checkbox" id="opt-renzoku"><b>配当を5年以上増やし続けている会社だけにする</b>
+          <small>連続増配5年以上。かなり厳しい条件なので、0件になったら外してください。</small></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="card__title">この条件で探します</h2>
+      <div class="cond"><dl id="cond-list"></dl></div>
+      <div id="warn-box"></div>
+      <a class="btn btn--primary btn--block" id="go-link" href="#" target="minkabu-result" rel="noopener">
+        みんかぶで検索する →
+      </a>
+      <p class="backhint">
+        検索結果は<b>別のタブ</b>で開きます。条件を変えたいときは、このタブに戻って選び直し、
+        もう一度ボタンを押してください。結果のタブは毎回同じものが使い回されるので、タブは増えません。
+      </p>
+      <details class="urlbox">
+        <summary>組み立てたURLを見る</summary>
+        <code id="url-out"></code>
+        <button type="button" id="copy-btn">URLをコピー</button>
+      </details>
+    </section>
+
+    <div class="ad-slot" id="ad-slot-result-bottom"></div>
+
+    <section class="card">
+      <h2 class="section__heading">この数字はどこから来ているのか</h2>
+      <p style="font-size:0.88rem;margin:0 0 6px">
+        投資について発信しているYouTubeチャンネル8つ・動画439本の内容を書き起こして集計し、
+        実際に語られていた水準の中央値を使っています(2026年8月集計)。
+        「PERは15倍が目安」といった教科書的な数字ではなく、<b>実際に使われている数字</b>である点が特徴です。
+      </p>
+      <table class="tbl">
+        <thead><tr><th>指標</th><th>配当を狙う人</th><th>値上がりを狙う人</th></tr></thead>
+        <tbody>
+          <tr><td>PER</td><td>9.9倍</td><td>18.2倍</td></tr>
+          <tr><td>PBR</td><td>1.0倍</td><td>1.0倍</td></tr>
+          <tr><td>配当利回り</td><td>4.2%</td><td>3.0%</td></tr>
+          <tr><td>配当性向</td><td>40%</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.82rem;color:var(--color-text-muted);margin:0">
+        同じ「日本株」でも、狙うものが違えば基準はここまで変わります。
+        だから「いくつが正解か」ではなく、<b>まず自分がどちらを狙うのかを決める</b>のが先になります。
+      </p>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">言葉の意味</h2>
+      <dl class="terms">
+        <dt>PER</dt><dd>いまの株価が、1年の利益の何年分にあたるか。低いほど割安とされます。</dd>
+        <dt>PBR</dt><dd>会社が持っている財産に対して、株価が何倍か。1倍が一つの目安とされます。</dd>
+        <dt>配当利回り</dt><dd>買った金額に対して、1年でもらえる配当の割合です。</dd>
+        <dt>配当性向</dt><dd>利益のうち何%を配当に回しているか。高すぎると無理をしている可能性があります。</dd>
+        <dt>時価総額</dt><dd>会社全体の値段。小さいほど売買が少なく、売りたいときに売りにくくなります。</dd>
+        <dt>自己資本比率</dt><dd>会社のお金のうち、借金でない部分の割合。高いほど財務に余裕があります。</dd>
+      </dl>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">お金まわりの他のツール</h2>
+      <div class="crosslinks">
+        <a class="crosslink" href="https://hakoniwa-lab.github.io/takehome-calculator/">
+          <b>手取り年収シミュレーター →</b>
+          <span>投資に回せる金額を考える前に、まず手元に残る金額を確かめる</span>
+        </a>
+        <a class="crosslink" href="https://hakoniwa-lab.github.io/sidejob-tax-simulator/">
+          <b>副業の税金シミュレーター →</b>
+          <span>副業の収入で増える税金と、確定申告が必要かどうかを計算する</span>
+        </a>
+        <a class="crosslink" href="https://hakoniwa-lab.github.io/furusato-simulator/">
+          <b>ふるさと納税シミュレーター →</b>
+          <span>実質2,000円で寄附できる控除上限額の目安を計算する</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <b>このツールについて</b><br>
+      本ツールは、検索条件を組み立てて外部サイト(みんかぶ)の条件検索へお渡しするだけのものです。
+      株価などのデータは一切保持しておらず、特定の銘柄をおすすめするものでもありません。
+      条件に合ったからといって、その会社が良い会社であるとは限りません。<br><br>
+      本ツールの運営者は金融商品取引業者ではなく、投資助言・代理業の登録も行っていません。
+      掲載している数値は、公開されている動画の内容を集計した参考情報であり、
+      その正確性・有用性を保証するものではありません。
+      投資の判断はご自身の責任で行ってください。
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p><a href="https://hakoniwa-lab.github.io/">HAKONIWA LAB</a> ・ <a href="https://hakoniwa-lab.github.io/privacy.html">プライバシーポリシー</a></p>
+    <p>&copy; 2026 HAKONIWA LAB — 灯家</p>
+  </footer>
+
+</div>
+<script src="./js/app.js"></script>
+</body>
+</html>
