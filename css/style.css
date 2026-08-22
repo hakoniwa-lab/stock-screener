@@ -167,6 +167,26 @@ html, body {
 .footer { text-align: center; font-size: 0.77rem; color: var(--color-text-muted); margin-top: 40px; }
 .footer a { color: var(--color-text-muted); }
 
+/* ---- 解説記事セクション / FAQ（トップページと guide/ で共有） ---- */
+.faq {
+  border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+  padding: 0 14px; margin-bottom: 8px; background: var(--color-surface);
+}
+.faq:last-child { margin-bottom: 0; }
+.faq > summary {
+  cursor: pointer; font-weight: 700; font-size: 0.89rem; padding: 12px 0;
+  list-style: none; display: flex; gap: 8px; align-items: flex-start;
+}
+.faq > summary::-webkit-details-marker { display: none; }
+.faq > summary::before { content: "Q"; color: var(--color-primary); font-weight: 800; flex: none; }
+.faq > summary:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.faq p { padding: 0 0 13px 18px; margin: 0; font-size: 0.86rem; color: var(--color-text-muted); line-height: 1.8; }
+.prose p { font-size: 0.88rem; line-height: 1.85; margin: 0 0 12px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose ul { font-size: 0.88rem; line-height: 1.85; margin: 0 0 12px; padding-left: 1.35em; }
+.prose ul:last-child { margin-bottom: 0; }
+.prose li { margin-bottom: 5px; }
+
 @media (max-width: 480px) {
   .page { padding: 32px 14px 44px; }
   .hero__title { font-size: 1.4rem; }
