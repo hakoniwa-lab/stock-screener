@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PERは何倍なら割安？狙うものが違うと基準が倍近く変わる | HAKONIWA LAB</title>
+<meta name="description" content="PERは何倍以下なら割安なのか。投資について発信しているYouTube動画439本を集計したところ、配当を狙う人と値上がりを狙う人で中央値が9.9倍と18.2倍に割れました。その条件で実際に検索して何社残るかも確かめています。">
+<link rel="canonical" href="https://hakoniwa-lab.github.io/stock-screener/guide/per-wariyasu-mokuyasu/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PERは何倍なら割安？狙うものが違うと基準が倍近く変わる">
+<meta property="og:description" content="配当を狙う人と値上がりを狙う人で、PERの中央値は9.9倍と18.2倍。同じ「割安」でも見ている数字が違います。">
+<meta property="og:url" content="https://hakoniwa-lab.github.io/stock-screener/guide/per-wariyasu-mokuyasu/">
+<link rel="stylesheet" href="../../css/style.css">
+<!--
+  AdSense のタグは意図的に外してある（本体 index.html と同じ方針）。
+  金融はYMYL領域で審査が厳しいため、AdSense の再審査が通るまで広告コードは入れない。
+-->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"PERは何倍以下なら割安ですか？","acceptedAnswer":{"@type":"Answer","text":"一つの正解はありません。投資について発信している動画439本を集計したところ、配当を狙う人が語っていたPERの中央値は9.9倍、値上がりを狙う人は18.2倍で、倍近い開きがありました。1銘柄を深く掘り下げる立場では33.6倍です。先に自分がどれを狙うのかを決めないと、条件が矛盾します。"}},{"@type":"Question","name":"PERが低いのに株価が上がらないのはなぜですか？","acceptedAnswer":{"@type":"Answer","text":"理由はいくつも考えられますが、よく挙げられるのが会社の規模と売買のしやすさです。時価総額が小さいと1日に売買される量も少なく、まとまった資金が入りにくくなります。売りたいときに売りにくいという事情があるため、数字の上で安く見えても買い手が集まらない、という説明がされることがあります。"}},{"@type":"Question","name":"PERとPBRはどちらを見ればいいですか？","acceptedAnswer":{"@type":"Answer","text":"見ているものが違うので、両方を並べると分かることが増えます。PERは今の利益に対して株価が何年分か、PBRは会社が持っている財産に対して株価が何倍かを表します。集計では、配当を狙う人も値上がりを狙う人もPBRの中央値は1.0倍で一致していました。差が出たのはPERのほうです。"}},{"@type":"Question","name":"配当利回りは高ければ高いほど良いのですか？","acceptedAnswer":{"@type":"Answer","text":"利回りだけでは判断できません。利回りは株価が下がるだけでも上がりますし、利益に対して無理な金額を配当に回している場合もあります。集計では配当性向の中央値が40%で、これは利益の40%までを配当に回す水準です。利回りと一緒に配当性向も見る、という使われ方がされていました。"}},{"@type":"Question","name":"この記事の数字はどこから来ているのですか？","acceptedAnswer":{"@type":"Answer","text":"投資について発信しているYouTubeチャンネル8つ・動画439本の内容を書き起こし、本文中に出てきた数値をすべて抽出して中央値を取ったものです（2026年8月集計）。教科書的な目安ではなく、実際に語られていた水準である点が特徴ですが、その正しさを検証したものではありません。"}}]}</script>
+<style>
+.crumbs { font-size: 0.8rem; color: var(--color-text-muted); margin: 0 0 18px; }
+.crumbs a { color: var(--color-text-muted); }
+.article p { font-size: 0.9rem; line-height: 1.85; margin: 0 0 12px; }
+.article p:last-child { margin-bottom: 0; }
+.article ul, .article ol { font-size: 0.9rem; line-height: 1.85; margin: 0 0 12px; padding-left: 1.35em; }
+.article li { margin-bottom: 5px; }
+.article h3 { font-size: 0.96rem; font-weight: 800; margin: 20px 0 8px; }
+.lead-points { background: var(--color-note-bg); border-radius: var(--radius-lg); padding: 13px 16px 13px 32px; margin: 0; font-size: 0.86rem; }
+.lead-points li { margin-bottom: 4px; }
+.lead-points li:last-child { margin-bottom: 0; }
+.faq { border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 0 14px; margin-bottom: 8px; background: var(--color-surface); }
+.faq > summary { cursor: pointer; font-weight: 700; font-size: 0.89rem; padding: 12px 0; list-style: none; display: flex; gap: 8px; align-items: flex-start; }
+.faq > summary::-webkit-details-marker { display: none; }
+.faq > summary::before { content: "Q"; color: var(--color-primary); font-weight: 800; flex: none; }
+.faq > summary:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.faq p { padding: 0 0 13px 18px; margin: 0; font-size: 0.86rem; color: var(--color-text-muted); line-height: 1.8; }
+.figure { text-align: center; background: var(--color-note-bg); border-radius: var(--radius-lg); padding: 16px; margin: 0 0 14px; }
+.figure .big { font-size: 1.9rem; font-weight: 800; color: var(--color-primary); line-height: 1.2; display: block; font-variant-numeric: tabular-nums; }
+.figure .cap { font-size: 0.79rem; color: var(--color-text-muted); display: block; margin-top: 4px; }
+.cta-wrap { text-align: center; margin-top: 16px; }
+.cta-note { font-size: 0.78rem; color: var(--color-text-muted); text-align: center; margin: 8px 0 0; }
+.src { font-size: 0.78rem; color: var(--color-text-muted); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="crumbs" aria-label="パンくずリスト">
+    <a href="../../">株スクリーニング条件メーカー</a> &raquo; <span aria-current="page">PERは何倍なら割安？</span>
+  </nav>
+
+  <header class="hero">
+    <span class="hero__mark"><a href="https://hakoniwa-lab.github.io/">HAKONIWA LAB</a></span>
+    <h1 class="hero__title">PERは何倍なら割安？</h1>
+    <p class="hero__lead">狙うものが違うと、基準は倍近く変わります。<br>実際に語られている数字を集計して確かめました。</p>
+  </header>
+
+  <main class="article">
+
+    <section class="card">
+      <p>「PERは15倍くらいが目安」——株の入門書でよく見る数字です。ところが実際に株の話をしている人たちが使っている数字を集めてみると、そうはなりませんでした。</p>
+      <p>投資について発信しているYouTubeチャンネル8つ・動画439本の内容を書き起こし、本文に出てきた数値をすべて拾って中央値を取ったところ、<b>同じ「割安」という言葉を使いながら、見ている数字が倍近く違う</b>ことが分かりました。</p>
+      <ul class="lead-points">
+        <li>配当を狙う人と値上がりを狙う人で、PERの基準がどう違うか</li>
+        <li>なぜそこまで差がつくのか</li>
+        <li>その条件で実際に検索すると何社残るのか</li>
+        <li>結局、自分は何倍を入れればいいのか</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">結論：一つの正解はなく、狙うもので基準が変わる</h2>
+      <table class="tbl">
+        <thead>
+          <tr><th>指標</th><th>配当を狙う人</th><th>値上がりを狙う人</th><th>1銘柄を深く追う人</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>PER</th><td>9.9倍</td><td>18.2倍</td><td>33.6倍</td></tr>
+          <tr><th>PBR</th><td>1.0倍</td><td>1.0倍</td><td>26.8倍</td></tr>
+          <tr><th>配当利回り</th><td>4.2%</td><td>3.0%</td><td>—</td></tr>
+          <tr><th>配当性向</th><td>40%</td><td>言及なし</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p>PERで見ると、配当を狙う人の中心は<b>9.9倍</b>、値上がりを狙う人の中心は<b>18.2倍</b>。ほぼ2倍の開きです。一方でPBRは、どちらも1.0倍で一致していました。<b>差が出るのはPERのほう</b>だ、というのがこの集計で一番はっきりした点です。</p>
+      <p>つまり「PERは何倍以下なら割安か」という問いには、<b>誰にとっての割安かを決めないと答えが出ない</b>ということになります。条件を作るときに立場を先に決めないと、そもそも条件同士が矛盾します。</p>
+      <p class="src">出典：投資について発信しているYouTubeチャンネル8つ・動画439本の書き起こしから数値を抽出して中央値を算出（2026年8月集計）。教科書的な目安ではなく、実際に語られていた水準です。ただしその正しさを検証したものではありません。</p>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">なぜ倍も違うのか — PERは「期待の値段」だから</h2>
+      <p>株価の成り立ちは、次の式で説明されることが多いです。</p>
+      <div class="figure">
+        <span class="big">株価 ＝ EPS × PER</span>
+        <span class="cap">EPS＝1株あたりの利益</span>
+      </div>
+      <p>この2つは、動くタイミングがまったく違います。</p>
+      <ul>
+        <li><b>EPS（1株あたりの利益）</b>は、決算が発表されるときにだけ動きます。つまり年に4回です。</li>
+        <li><b>PER</b>は、期待・話題・金利などで<b>毎日動きます</b>。</li>
+      </ul>
+      <p>言い換えると、PERは「今出ている利益に対して、市場がどれだけ上乗せして払っているか」を表す数字です。だから立場によって許せる水準が変わります。</p>
+      <h3>配当を狙う立場</h3>
+      <p>今すでに出ている利益から配当を受け取るのが目的なので、利益の何年分まで払うかに厳しくなります。上乗せが小さいほうが都合がよく、結果としてPERは10倍前後に寄ります。</p>
+      <h3>値上がりを狙う立場</h3>
+      <p>これから利益が増えることに賭けるので、今の利益で計算したPERが高く見えても許容します。18倍前後まで広がるのはこのためです。</p>
+      <h3>1銘柄を深く追う立場</h3>
+      <p>そもそも「高いのになぜ買われているのか」を説明する立場なので、扱う銘柄のPERは自然と高くなります。中央値33.6倍という数字は、割安な銘柄を探しているのではなく、話題になっている銘柄を解説しているぶん高く出ている、と読むのが自然です。</p>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">その条件で実際に検索したら104社だった</h2>
+      <p>配当を狙う人の中央値を、そのまま検索条件にしてみました。</p>
+      <ul>
+        <li>PER 10倍以下</li>
+        <li>配当利回り 4.2%以上</li>
+        <li>配当性向 40%以下</li>
+      </ul>
+      <div class="figure">
+        <span class="big">104社</span>
+        <span class="cap">上記3条件のみで検索した結果</span>
+      </div>
+      <p>厳しすぎて0社になることも、緩すぎて数百社が並ぶこともありませんでした。<b>集計から出てきた基準は、条件として実際に機能する水準だった</b>ということになります。</p>
+      <p>ただし、中身には強い偏りがありました。</p>
+      <table class="tbl">
+        <thead><tr><th>見た点</th><th>104社の内訳</th></tr></thead>
+        <tbody>
+          <tr><th>市場</th><td>東証スタンダード・グロースが大半。プライムは少数</td></tr>
+          <tr><th>規模</th><td>時価総額は数十億〜数百億円が中心</td></tr>
+          <tr><th>業種</th><td>不動産・建設が突出。次いで自動車部品</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">大きい会社に限ると、104社が3社になった</h2>
+      <p>同じ条件に「時価総額2,000億円以上」を足すと、結果はこう変わりました。</p>
+      <div class="figure">
+        <span class="big">104社 → 3社</span>
+        <span class="cap">時価総額2,000億円以上を追加した場合</span>
+      </div>
+      <p>ここが、この記事でいちばん伝えたい部分です。</p>
+      <div class="warn">
+        <b>安いことには理由があるかもしれない</b>
+        時価総額が小さい会社は、1日に売買される量も少なくなります。買いたい量を買えず、売りたいときに売りにくい。まとまった資金を動かす立場ほど、この「売りにくさ」を避けます。<br><br>
+        すると、<b>PERが低く配当利回りが高いという条件を満たすこと自体が、大きな資金が買いに来ていない会社であることの裏返し</b>かもしれない、という見方が出てきます。安いから放置されているのではなく、放置されているから安いままである、という順序です。
+      </div>
+      <p>実際、「業績が良いのに株価が上がらない銘柄は、時価総額が低く流動性が低いから買い手が入りにくい」という説明は、集計した動画の中でも語られていました。数字の条件だけを見ていると、この事情は見えません。</p>
+      <p>だからこそ、<b>条件検索は出発点であって結論ではありません</b>。なぜその会社が安く放置されているのかは、決算資料を読んだり、その業界を知っている人の話を探したりして、自分で確かめる必要があります。</p>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">では、自分は何倍を入れればいいのか</h2>
+      <p>集計値をそのまま条件にすると、おおむね次のようになります。</p>
+      <h3>配当を受け取りたい場合</h3>
+      <ul>
+        <li>PER 10倍以下 ／ 配当利回り 4.2%以上 ／ 配当性向 40%以下</li>
+        <li>配当性向を入れておくと、無理をして配当を出している会社を外しやすくなります</li>
+      </ul>
+      <h3>値上がりを狙いたい場合</h3>
+      <ul>
+        <li>PER 18倍以下に、<b>売上が伸びているか</b>（3年平均の売上成長率）と<b>本業で稼げているか</b>（売上高営業利益率）を足す</li>
+        <li>PERだけを緩めると、ただ高いだけの銘柄も混ざります</li>
+      </ul>
+      <h3>優待が目的の場合</h3>
+      <ul>
+        <li>優待あり ／ 配当利回り 2.4%以上 ／ PER 16倍以下</li>
+        <li>優待だけで絞ると数百社が並ぶので、PERを足すと現実的な数に収まります</li>
+      </ul>
+      <h3>どれを選ぶ場合でも</h3>
+      <p>時価総額に下限を入れておくことをおすすめします。前の章で見たとおり、下限なしだと売買が少ない小さな会社に大きく偏るためです。何を入れればよいか分からない場合は、まず300億円あたりから試すと様子が分かります。</p>
+
+      <div class="cta-wrap">
+        <a class="btn btn--primary btn--block" href="../../">3つ答えて条件を作る</a>
+      </div>
+      <p class="cta-note">無料・登録不要。組み立てた条件で、そのまま条件検索の結果を開けます。株価データは持たないので、表示される内容が古くなることはありません。</p>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">よくある質問</h2>
+      <details class="faq">
+        <summary>PERは何倍以下なら割安ですか？</summary>
+        <p>一つの正解はありません。集計では、配当を狙う人が語っていたPERの中央値は9.9倍、値上がりを狙う人は18.2倍で、倍近い開きがありました。1銘柄を深く掘り下げる立場では33.6倍です。先に自分がどれを狙うのかを決めないと、条件が矛盾します。</p>
+      </details>
+      <details class="faq">
+        <summary>PERが低いのに株価が上がらないのはなぜですか？</summary>
+        <p>理由はいくつも考えられますが、よく挙げられるのが会社の規模と売買のしやすさです。時価総額が小さいと1日に売買される量も少なく、まとまった資金が入りにくくなります。売りたいときに売りにくいという事情があるため、数字の上で安く見えても買い手が集まらない、という説明がされることがあります。</p>
+      </details>
+      <details class="faq">
+        <summary>PERとPBRはどちらを見ればいいですか？</summary>
+        <p>見ているものが違うので、両方を並べると分かることが増えます。PERは今の利益に対して株価が何年分か、PBRは会社が持っている財産に対して株価が何倍かを表します。集計では、配当を狙う人も値上がりを狙う人もPBRの中央値は1.0倍で一致していました。差が出たのはPERのほうです。</p>
+      </details>
+      <details class="faq">
+        <summary>配当利回りは高ければ高いほど良いのですか？</summary>
+        <p>利回りだけでは判断できません。利回りは株価が下がるだけでも上がりますし、利益に対して無理な金額を配当に回している場合もあります。集計では配当性向の中央値が40%で、これは利益の40%までを配当に回す水準です。利回りと一緒に配当性向も見る、という使われ方がされていました。</p>
+      </details>
+      <details class="faq">
+        <summary>この記事の数字はどこから来ているのですか？</summary>
+        <p>投資について発信しているYouTubeチャンネル8つ・動画439本の内容を書き起こし、本文中に出てきた数値をすべて抽出して中央値を取ったものです（2026年8月集計）。教科書的な目安ではなく、実際に語られていた水準である点が特徴ですが、その正しさを検証したものではありません。</p>
+      </details>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">まとめ</h2>
+      <ul>
+        <li>PERの「割安の基準」は一つではなく、配当を狙う人は9.9倍、値上がりを狙う人は18.2倍が中心だった</li>
+        <li>差が出るのはPERで、PBRはどちらも1.0倍で一致していた</li>
+        <li>PERは「今の利益にどれだけ上乗せして払っているか」なので、何に賭けるかで許せる水準が変わる</li>
+        <li>配当狙いの条件をそのまま使うと104社。時価総額2,000億円以上を足すと3社まで減った</li>
+        <li>条件を満たすこと自体が、大きな資金が買いに来ていない会社である裏返しかもしれない</li>
+        <li>条件検索は出発点。「なぜ安いのか」は自分で確かめる必要がある</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">言葉の意味</h2>
+      <dl class="terms">
+        <dt>PER</dt><dd>いまの株価が、1年の利益の何年分にあたるか。低いほど割安とされます。</dd>
+        <dt>EPS</dt><dd>1株あたりの利益。決算が発表されるときに動きます。</dd>
+        <dt>PBR</dt><dd>会社が持っている財産に対して、株価が何倍か。1倍が一つの目安とされます。</dd>
+        <dt>配当利回り</dt><dd>買った金額に対して、1年でもらえる配当の割合です。</dd>
+        <dt>配当性向</dt><dd>利益のうち何%を配当に回しているか。高すぎると無理をしている可能性があります。</dd>
+        <dt>時価総額</dt><dd>会社全体の値段。小さいほど売買が少なく、売りたいときに売りにくくなります。</dd>
+      </dl>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">お金まわりの他のツール</h2>
+      <div class="crosslinks">
+        <a class="crosslink" href="../../">
+          <b>株スクリーニング条件メーカー →</b>
+          <span>この記事の数字を使って、条件検索にそのまま渡せる条件を3問で組み立てる</span>
+        </a>
+        <a class="crosslink" href="https://hakoniwa-lab.github.io/takehome-calculator/">
+          <b>手取り年収シミュレーター →</b>
+          <span>投資に回せる金額を考える前に、まず手元に残る金額を確かめる</span>
+        </a>
+        <a class="crosslink" href="https://hakoniwa-lab.github.io/sidejob-tax-simulator/">
+          <b>副業の税金シミュレーター →</b>
+          <span>副業の収入で増える税金と、確定申告が必要かどうかを計算する</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <b>この記事について</b><br>
+      本記事は、公開されている動画の内容を集計して整理した参考情報であり、特定の銘柄や投資手法をおすすめするものではありません。
+      掲載している数値は集計時点のものであり、その正確性・有用性を保証するものではありません。
+      条件に合ったからといって、その会社が良い会社であるとは限りません。<br><br>
+      本サイトの運営者は金融商品取引業者ではなく、投資助言・代理業の登録も行っていません。
+      投資の判断はご自身の責任で行ってください。
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p><a href="https://hakoniwa-lab.github.io/">HAKONIWA LAB</a> ・ <a href="https://hakoniwa-lab.github.io/privacy.html">プライバシーポリシー</a></p>
+    <p>&copy; 2026 HAKONIWA LAB — 灯家</p>
+  </footer>
+
+</div>
+</body>
+</html>
