@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PER50倍は割高？同じ株が28.8倍にも見える理由 | HAKONIWA LAB</title>
+<meta name="description" content="PER50倍は割高なのか。同じ日の同じ株価でも、どの期の利益で割るかでPERは102.8倍・59.7倍・28.8倍に変わります。実際の決算数字で計算し直して、その仕組みと自分で確かめる方法をまとめました。">
+<link rel="canonical" href="https://hakoniwa-lab.github.io/stock-screener/guide/per-50bai-waridaka/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PER50倍は割高？同じ株が28.8倍にも見える理由">
+<meta property="og:description" content="同じ株価でも、割る利益を変えるとPERは102.8倍・59.7倍・28.8倍になります。実際の決算数字で確かめました。">
+<meta property="og:url" content="https://hakoniwa-lab.github.io/stock-screener/guide/per-50bai-waridaka/">
+<link rel="stylesheet" href="../../css/style.css">
+<!--
+  AdSense のタグは意図的に外してある（本体 index.html と同じ方針）。
+  金融はYMYL領域で審査が厳しいため、AdSense の再審査が通るまで広告コードは入れない。
+-->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"PER50倍は割高ですか？","acceptedAnswer":{"@type":"Answer","text":"その数字だけでは判断できません。PERは株価を1株あたりの利益で割ったものなので、どの期の利益を使うかで答えが変わります。実際の例では、同じ日の同じ株価でも、2年前の利益で割ると102.8倍、前期の実績で割ると59.7倍、会社が出している今期予想で割ると28.8倍になりました。まず、その50倍がどの利益で計算されたものかを確かめる必要があります。"}},{"@type":"Question","name":"実績PERと予想PERの違いは何ですか？","acceptedAnswer":{"@type":"Answer","text":"実績PERはすでに確定した決算の利益で割ったもの、予想PERは会社が発表している今期の見込みで割ったものです。利益が伸びている会社ほど予想PERのほうが低く出ます。逆に、予想が下方修正されると予想PERは跳ね上がります。"}},{"@type":"Question","name":"サイトによってPERの数字が違うのはなぜですか？","acceptedAnswer":{"@type":"Answer","text":"使っている利益が違うためです。予想PERを表示しているサイトと実績PERを表示しているサイトがあり、同じ銘柄でも数字が変わります。どちらが使われているかは、株価をその期の1株あたり利益で割ってみて、表示されている数字と一致するかで確かめられます。"}},{"@type":"Question","name":"PERが高い銘柄は避けたほうがいいですか？","acceptedAnswer":{"@type":"Answer","text":"一概には言えません。投資について発信している動画439本の集計では、1銘柄を深く掘り下げて解説している人たちが扱う銘柄のPERは中央値33.6倍でした。高いPERの銘柄がよく語られているということです。ただし高いPERは、これから利益が増えるという見込みを株価が織り込んでいる状態でもあるため、その見込みが外れたときの値動きは大きくなりやすい点には注意が必要です。"}},{"@type":"Question","name":"自分でPERを計算するにはどうすればいいですか？","acceptedAnswer":{"@type":"Answer","text":"株価を1株あたり利益で割るだけです。株価5,665円、1株あたり利益196.9円なら28.8倍になります。決算資料には前期の実績と今期の予想が並んでいるので、それぞれで割ってみると、その銘柄のPERがどの範囲で動いているかが見えます。"}}]}</script>
+<style>
+.crumbs { font-size: 0.8rem; color: var(--color-text-muted); margin: 0 0 18px; }
+.crumbs a { color: var(--color-text-muted); }
+.article p { font-size: 0.9rem; line-height: 1.85; margin: 0 0 12px; }
+.article p:last-child { margin-bottom: 0; }
+.article ul, .article ol { font-size: 0.9rem; line-height: 1.85; margin: 0 0 12px; padding-left: 1.35em; }
+.article li { margin-bottom: 5px; }
+.article h3 { font-size: 0.96rem; font-weight: 800; margin: 20px 0 8px; }
+.lead-points { background: var(--color-note-bg); border-radius: var(--radius-lg); padding: 13px 16px 13px 32px; margin: 0; font-size: 0.86rem; }
+.lead-points li { margin-bottom: 4px; }
+.lead-points li:last-child { margin-bottom: 0; }
+.figure { text-align: center; background: var(--color-note-bg); border-radius: var(--radius-lg); padding: 16px; margin: 0 0 14px; }
+.figure .big { font-size: 1.75rem; font-weight: 800; color: var(--color-primary); line-height: 1.3; display: block; font-variant-numeric: tabular-nums; }
+.figure .cap { font-size: 0.79rem; color: var(--color-text-muted); display: block; margin-top: 4px; }
+.cta-wrap { text-align: center; margin-top: 16px; }
+.cta-note { font-size: 0.78rem; color: var(--color-text-muted); text-align: center; margin: 8px 0 0; }
+.src { font-size: 0.78rem; color: var(--color-text-muted); }
+.tbl td.hi { color: var(--color-primary); font-weight: 800; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="crumbs" aria-label="パンくずリスト">
+    <a href="../../">株スクリーニング条件メーカー</a> &raquo; <span aria-current="page">PER50倍は割高？</span>
+  </nav>
+
+  <header class="hero">
+    <span class="hero__mark"><a href="https://hakoniwa-lab.github.io/">HAKONIWA LAB</a></span>
+    <h1 class="hero__title">PER50倍は割高？</h1>
+    <p class="hero__lead">同じ日の同じ株価が、28.8倍にも102.8倍にも見えます。<br>実際の決算の数字で計算し直して確かめました。</p>
+  </header>
+
+  <main class="article">
+
+    <section class="card">
+      <p>気になる会社のページを開いたら「PER 50倍」と出ていた。高いのか安いのか分からないまま、なんとなく手が止まる——株を調べ始めた人がよくぶつかるところです。</p>
+      <p>先に結論を書くと、<b>その数字だけでは割高かどうかは決まりません。</b>PERは計算のしかたが1つではないからです。実際、ある大型株の数字で計算し直したところ、<b>同じ日の同じ株価が102.8倍にも59.7倍にも28.8倍にもなりました。</b></p>
+      <ul class="lead-points">
+        <li>なぜ同じ株価から3つのPERが出てくるのか</li>
+        <li>実績PERと予想PER、どちらを見ているのか確かめる方法</li>
+        <li>そのうえで「高い・安い」をどう考えるか</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">同じ株価で計算し直したら、3つの数字が出てきた</h2>
+      <p>東証プライムのある大型株の、実際の数字です（2026年8月14日終値時点）。株価は<b>5,665円</b>でした。</p>
+      <p>決算資料には、1株あたりの利益（EPS）が3期分並んでいます。この株価を、それぞれの利益で割ってみます。</p>
+      <table class="tbl">
+          <thead>
+            <tr><th>どの期の利益で割るか</th><th>1株あたり利益</th><th>出てくるPER</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>2年前の実績</td><td>55.1円</td><td class="hi">102.8倍</td></tr>
+            <tr><td>前期の実績</td><td>94.9円</td><td class="hi">59.7倍</td></tr>
+            <tr><td>今期の会社予想</td><td>196.9円</td><td class="hi">28.8倍</td></tr>
+          </tbody>
+      </table>
+      <p><b>株価は1つです。</b>同じ日の、同じ会社の、同じ5,665円。変えたのは「どの利益で割るか」だけで、出てくる数字は3.6倍も開きました。</p>
+      <div class="warn">
+        <b>「PER50倍」と見えている銘柄が、別の見方では28.8倍かもしれない</b>
+        この会社の場合、株探などが表示していたのは今期予想で計算した<b>28.8倍</b>でした。一方、前期の確定した利益で計算すれば<b>59.7倍</b>です。同じ銘柄を見ていても、どちらの数字を目にしたかで印象がまるで変わります。
+      </div>
+      <p class="src">実在する銘柄の公開数字ですが、特定の銘柄をすすめる記事ではないため社名は伏せています。数値は2026年8月14日終値時点のもので、現在の株価・業績とは異なります。</p>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">なぜこうなるのか — PERは「割り算の結果」でしかない</h2>
+      <p>株価の成り立ちは、次の式で説明されます。</p>
+      <div class="figure">
+        <span class="big">株価 ＝ EPS × PER</span>
+        <span class="cap">EPS＝1株あたりの利益</span>
+      </div>
+      <p>この式を入れ替えると、こうなります。</p>
+      <div class="figure">
+        <span class="big">PER ＝ 株価 ÷ EPS</span>
+        <span class="cap">だから、EPSを変えればPERも変わる</span>
+      </div>
+      <p>つまり<b>PERは独立した指標ではなく、割り算の結果</b>です。分母のEPSが変われば、答えも変わります。</p>
+      <p>そして<b>EPSは決算が発表されるときにしか動きません。</b>年に4回です。手元にある「利益」には、確定したものと、これから確定するものがあります。</p>
+      <h3>実績PER</h3>
+      <p>すでに確定した決算の利益で割ったもの。事実にもとづく数字ですが、<b>過去を見ている</b>ことになります。</p>
+      <h3>予想PER</h3>
+      <p>会社が発表している今期の見込みで割ったもの。<b>先を見ている</b>数字ですが、あくまで予想です。上の例のように利益が伸びている会社では、予想PERのほうが大きく低く出ます。</p>
+      <p>どちらが正しいということはありません。ただ、<b>見ている数字がどちらなのかを知らないまま比べると、話がかみ合わなくなります。</b></p>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">自分が見ているPERがどちらかを確かめる方法</h2>
+      <p>やることは割り算ひとつです。</p>
+      <ol>
+        <li>決算資料か株式情報サイトで、<b>株価</b>と<b>1株あたり利益</b>を見る</li>
+        <li><b>株価 ÷ 1株あたり利益</b> を計算する</li>
+        <li>サイトに表示されているPERと一致するか見る</li>
+      </ol>
+      <p>一致した期の利益が、そのサイトが使っているものです。上の例なら <b>5,665 ÷ 196.9 = 28.8</b> となり、表示と合いました。今期予想を使っていた、と分かります。</p>
+      <div class="warn">
+        <b>この計算には、もう一つ役に立つ使い道があります</b>
+        数字を書き写すときの<b>検算</b>になります。掛け算・割り算が合わなければ、別の期の数字を拾っていたか、どこかで写し間違えているということです。指標を手で控えるときは、必ずこの一手間を入れておくと安心です。
+      </div>
+      <p>なお、予想はあくまで予想です。<b>会社が業績見通しを下方修正すれば、分母が小さくなってPERは跳ね上がります。</b>株価が1円も動かなくても、です。予想PERの低さだけを根拠にするのが危ういのはこのためです。</p>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">そのうえで「高い・安い」をどう考えるか</h2>
+      <p>どの利益で割ったかが分かったら、次は比べる相手です。ここでも一つの正解はありません。</p>
+      <p>投資について発信しているYouTubeチャンネル8つ・動画439本の内容を書き起こして数値を集計したところ、<b>立場によって基準が倍近く違いました</b>（2026年8月集計）。</p>
+      <table class="tbl">
+          <thead><tr><th>立場</th><th>PERの中央値</th></tr></thead>
+          <tbody>
+            <tr><td>配当を狙う人</td><td>9.9倍</td></tr>
+            <tr><td>値上がりを狙う人</td><td>18.2倍</td></tr>
+            <tr><td><b>1銘柄を深く追う人</b></td><td class="hi">33.6倍</td></tr>
+          </tbody>
+      </table>
+      <p>注目したいのは3行目です。<b>1銘柄を掘り下げて解説している人たちが扱う銘柄は、PERの中央値が33.6倍。</b>PBRにいたっては26.8倍でした。つまり<b>高いPERの銘柄こそ、よく語られている</b>ということになります。</p>
+      <p>「PERが50倍だから論外」と機械的に外すと、いま話題になっている銘柄の多くが視界から消えます。一方で、<b>高いPERは「これから利益が増える」という見込みを株価がすでに織り込んでいる状態</b>でもあります。その見込みどおりに増えなかったときの値動きは大きくなりやすい、という面は押さえておく必要があります。</p>
+      <p>結局のところ、<b>PERの数字は「割高かどうか」ではなく「市場が何を期待しているか」を示している</b>と読むほうが、実際の使い方に近いようです。</p>
+
+      <div class="cta-wrap">
+        <a class="btn btn--primary btn--block" href="../../">自分の狙いに合う条件を3問で作る</a>
+      </div>
+      <p class="cta-note">無料・登録不要。配当狙い／値上がり狙い／優待のどれを選ぶかで、PERにいくつを入れるかが変わります。組み立てた条件で、そのまま条件検索の結果を開けます。</p>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">よくある質問</h2>
+      <details class="faq">
+        <summary>PER50倍は割高ですか？</summary>
+        <p>その数字だけでは判断できません。PERは株価を1株あたりの利益で割ったものなので、どの期の利益を使うかで答えが変わります。実際の例では、同じ日の同じ株価でも、2年前の利益で割ると102.8倍、前期の実績で割ると59.7倍、会社が出している今期予想で割ると28.8倍になりました。まず、その50倍がどの利益で計算されたものかを確かめる必要があります。</p>
+      </details>
+      <details class="faq">
+        <summary>実績PERと予想PERの違いは何ですか？</summary>
+        <p>実績PERはすでに確定した決算の利益で割ったもの、予想PERは会社が発表している今期の見込みで割ったものです。利益が伸びている会社ほど予想PERのほうが低く出ます。逆に、予想が下方修正されると予想PERは跳ね上がります。</p>
+      </details>
+      <details class="faq">
+        <summary>サイトによってPERの数字が違うのはなぜですか？</summary>
+        <p>使っている利益が違うためです。予想PERを表示しているサイトと実績PERを表示しているサイトがあり、同じ銘柄でも数字が変わります。どちらが使われているかは、株価をその期の1株あたり利益で割ってみて、表示されている数字と一致するかで確かめられます。</p>
+      </details>
+      <details class="faq">
+        <summary>PERが高い銘柄は避けたほうがいいですか？</summary>
+        <p>一概には言えません。投資について発信している動画439本の集計では、1銘柄を深く掘り下げて解説している人たちが扱う銘柄のPERは中央値33.6倍でした。高いPERの銘柄がよく語られているということです。ただし高いPERは、これから利益が増えるという見込みを株価が織り込んでいる状態でもあるため、その見込みが外れたときの値動きは大きくなりやすい点には注意が必要です。</p>
+      </details>
+      <details class="faq">
+        <summary>自分でPERを計算するにはどうすればいいですか？</summary>
+        <p>株価を1株あたり利益で割るだけです。株価5,665円、1株あたり利益196.9円なら28.8倍になります。決算資料には前期の実績と今期の予想が並んでいるので、それぞれで割ってみると、その銘柄のPERがどの範囲で動いているかが見えます。</p>
+      </details>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">まとめ</h2>
+      <ul>
+        <li>PERは独立した指標ではなく <b>株価 ÷ 1株あたり利益</b> の割り算の結果</li>
+        <li>同じ日の同じ株価でも、割る利益を変えると102.8倍・59.7倍・28.8倍になった</li>
+        <li>実績PERは過去の確定値、予想PERは会社の見込み。利益が伸びている会社ほど予想PERは低く出る</li>
+        <li>どちらを見ているかは、株価 ÷ 1株あたり利益 が表示値と一致するかで確かめられる</li>
+        <li>予想が下方修正されると、株価が動かなくてもPERは跳ね上がる</li>
+        <li>比べる基準も立場で違う。配当狙い9.9倍／値上がり狙い18.2倍／1銘柄を深く追う人33.6倍</li>
+        <li>PERは「割高かどうか」より「市場が何を期待しているか」を示す数字として読むほうが近い</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">あわせて読みたい</h2>
+      <ul>
+        <li><a href="../per-wariyasu-mokuyasu/">PERは何倍なら割安？狙うものが違うと基準が倍近く変わる</a> — 3つの立場の基準線がどこから来たのか、その条件で実際に何社残るのかを解説しています</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 class="section__heading">お金まわりの他のツール</h2>
+      <div class="crosslinks">
+        <a class="crosslink" href="../../">
+          <b>株スクリーニング条件メーカー →</b>
+          <span>この記事の数字を使って、条件検索にそのまま渡せる条件を3問で組み立てる</span>
+        </a>
+        <a class="crosslink" href="https://hakoniwa-lab.github.io/takehome-calculator/">
+          <b>手取り年収シミュレーター →</b>
+          <span>投資に回せる金額を考える前に、まず手元に残る金額を確かめる</span>
+        </a>
+        <a class="crosslink" href="https://hakoniwa-lab.github.io/sidejob-tax-simulator/">
+          <b>副業の税金シミュレーター →</b>
+          <span>副業の収入で増える税金と、確定申告が必要かどうかを計算する</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <b>この記事について</b><br>
+      本記事は、公開されている決算数字と動画の内容を整理した参考情報であり、特定の銘柄や投資手法をおすすめするものではありません。
+      掲載している数値は記載時点のものであり、その正確性・有用性を保証するものではありません。
+      PERが低いから割安、高いから割高、といった単純な判断ができるものでもありません。<br><br>
+      本サイトの運営者は金融商品取引業者ではなく、投資助言・代理業の登録も行っていません。
+      投資の判断はご自身の責任で行ってください。
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p><a href="https://hakoniwa-lab.github.io/">HAKONIWA LAB</a> ・ <a href="https://hakoniwa-lab.github.io/privacy.html">プライバシーポリシー</a></p>
+    <p>&copy; 2026 HAKONIWA LAB — 灯家</p>
+  </footer>
+
+</div>
+</body>
+</html>
