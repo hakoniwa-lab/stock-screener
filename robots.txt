@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hakoniwa-lab.github.io/stock-screener/sitemap.xml
+Sitemap: https://hakoniwalab.com/stock-screener/sitemap.xml
