@@ -193,3 +193,16 @@ html, body {
   .cond dl, .terms { grid-template-columns: 1fr; gap: 2px 0; }
   .cond dd, .terms dd { margin-bottom: 7px; }
 }
+
+/* メール登録フォーム（他アプリと共通） */
+.card--lead { text-align: center; }
+.lead-form { display: flex; gap: 8px; margin-top: 14px; }
+.lead-form__input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+@media (max-width: 480px) { .lead-form { flex-direction: column; } }
