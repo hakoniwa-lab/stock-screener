@@ -3,7 +3,7 @@
 3つの質問に答えると、みんかぶの銘柄スクリーニング(条件検索)にそのまま渡せるURLを組み立てるWebアプリ。
 HAKONIWA LAB の10本目のツール。ビルドツール不要の Vanilla HTML/CSS/JS。
 
-公開URL: https://hakoniwa-lab.github.io/stock-screener/
+公開URL: [https://hakoniwa-lab.github.io/](https://hakoniwalab.com/)stock-screener/
 
 ## 何を解いているのか
 
